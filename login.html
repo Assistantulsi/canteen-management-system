@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Login — CampusBite Canteen</title>
+  <meta name="description" content="Sign in to CampusBite to order food, track your tokens, and manage your campus canteen wallet.">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .auth-page-wrapper {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      background: var(--bg-main);
+    }
+
+    .auth-visual-side {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3.5rem;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    .auth-visual-side::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      right: -80px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.3) 0%, transparent 70%);
+      border-radius: var(--radius-full);
+    }
+
+    .auth-food-decor {
+      margin: auto 0;
+      max-width: 460px;
+    }
+
+    .auth-quote-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin-top: 2rem;
+    }
+
+    .auth-quote-card p {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: #f1f5f9;
+      line-height: 1.6;
+    }
+
+    .auth-form-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem 4rem;
+      max-width: 540px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .auth-header {
+      margin-bottom: 2rem;
+    }
+
+    .auth-title {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .auth-subtitle {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .demo-creds-banner {
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-left: 4px solid var(--primary);
+      padding: 0.9rem 1.1rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      color: #92400e;
+    }
+
+    [data-theme="dark"] .demo-creds-banner {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: rgba(245, 158, 11, 0.25);
+      color: #fde68a;
+    }
+
+    .demo-creds-banner code {
+      background: rgba(0,0,0,0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .auth-page-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .auth-visual-side {
+        display: none;
+      }
+      .auth-form-side {
+        padding: 2.5rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-page-wrapper">
+    <!-- Visual Culinary Side (Desktop) -->
+    <div class="auth-visual-side">
+      <a href="index.html" class="brand-logo" style="color: #ffffff;">
+        <div class="logo-icon-wrapper"><i class="fa-solid fa-utensils"></i></div>
+        <div class="brand-name">
+          <span class="brand-title" style="background: none; -webkit-text-fill-color: #ffffff;">CampusBite</span>
+          <span class="brand-tagline">Student Portal</span>
+        </div>
+      </a>
+
+      <div class="auth-food-decor">
+        <span class="diet-tag diet-veg" style="margin-bottom: 1rem;">
+          <i class="fa-solid fa-circle"></i> 100% Hygienic Campus Food
+        </span>
+        <h2 style="font-size: 2.5rem; font-weight: 800; line-height: 1.2; color: #fff;">
+          Order between lectures. <br>
+          <span style="color: #f59e0b;">Pick up without waiting.</span>
+        </h2>
+        <div class="auth-quote-card">
+          <p>"Saved me so much time during exam week. Ordering my hot filter coffee before the bell rings is magic!"</p>
+          <div style="margin-top: 1rem; display: flex; align-items: center; gap: 0.75rem;">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" alt="Student" style="width: 36px; height: 36px; border-radius: 50%;">
+            <div>
+              <strong style="font-size: 0.88rem; color: #fff; display: block;">Aarav Sharma</strong>
+              <small style="color: #94a3b8;">CSE 3rd Year (Student ID: STU1024)</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size: 0.8rem; color: #94a3b8;">
+        © 2026 CampusBite Canteen System • Academic Project
+      </div>
+    </div>
+
+    <!-- Auth Form Side -->
+    <div class="auth-form-side">
+      <div class="auth-header">
+        <a href="index.html" style="font-size: 0.88rem; color: var(--primary); display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 1rem;">
+          <i class="fa-solid fa-arrow-left"></i> Back to Homepage
+        </a>
+        <h1 class="auth-title">Student Login</h1>
+        <p class="auth-subtitle">Enter your college credentials to access your food orders & wallet.</p>
+      </div>
+
+      <!-- Demo Credentials Helper Banner -->
+      <div class="demo-creds-banner">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+          <strong><i class="fa-solid fa-key"></i> Demo Credentials:</strong>
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-sm"
+            style="padding: 0.15rem 0.6rem; font-size: 0.75rem;"
+            onclick="Auth.fillCredentials('student@college.edu', 'student123', '#student-login-form')"
+          >
+            Auto-Fill
+          </button>
+        </div>
+        Email: <code>student@college.edu</code> or ID: <code>STU1024</code><br>
+        Password: <code>student123</code>
+      </div>
+
+      <!-- Login Form -->
+      <form id="student-login-form" novalidate>
+        <div class="form-group" id="group-identifier">
+          <label class="form-label" for="login-identifier">College Email or Student ID</label>
+          <div class="input-icon-wrapper">
+            <i class="fa-solid fa-id-card input-icon"></i>
+            <input
+              type="text"
+              id="login-identifier"
+              class="form-control"
+              placeholder="e.g. student@college.edu or STU1024"
+              required
+            >
+          </div>
+          <span class="form-error" id="error-identifier">Please enter your college email or student ID</span>
+        </div>
+
+        <div class="form-group" id="group-password">
+          <div class="form-label">
+            <label for="login-password">Password</label>
+            <a href="javascript:void(0)" onclick="Utils.showToast('Demo: Use password \'student123\' to log in.', 'info', 4000)" style="font-size: 0.8rem; color: var(--primary);">
+              Forgot Password?
+            </a>
+          </div>
+          <div class="input-icon-wrapper">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input
+              type="password"
+              id="login-password"
+              class="form-control"
+              placeholder="Enter your password"
+              required
+            >
+            <button type="button" class="password-toggle" aria-label="Toggle password view">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+          <span class="form-error" id="error-password">Please enter your password</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <label class="form-check">
+            <input type="checkbox" id="remember-me" checked>
+            <span>Remember this device</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="login-submit-btn">
+          <span id="btn-text"><i class="fa-solid fa-right-to-bracket"></i> Sign In to Canteen</span>
+          <i class="fa-solid fa-circle-notch fa-spin" id="btn-spinner" style="display: none;"></i>
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 1.75rem; font-size: 0.95rem; color: var(--text-secondary);">
+        Don't have a student account? 
+        <a href="register.html" style="color: var(--primary); font-weight: 700;">Create Account</a>
+      </div>
+
+      <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-color); font-size: 0.85rem;">
+        Are you a Canteen Staff or Manager? 
+        <a href="admin-login.html" style="color: var(--accent-ruby); font-weight: 600;">Staff Admin Login</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      Auth.setupPasswordToggles();
+
+      const form = document.getElementById("student-login-form");
+      const identifierInput = document.getElementById("login-identifier");
+      const passwordInput = document.getElementById("login-password");
+      const submitBtn = document.getElementById("login-submit-btn");
+      const btnText = document.getElementById("btn-text");
+      const btnSpinner = document.getElementById("btn-spinner");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Validation
+        let isValid = true;
+        document.querySelectorAll(".form-group").forEach(g => g.classList.remove("has-error"));
+
+        if (!identifierInput.value.trim()) {
+          document.getElementById("group-identifier").classList.add("has-error");
+          isValid = false;
+        }
+
+        if (!passwordInput.value.trim()) {
+          document.getElementById("group-password").classList.add("has-error");
+          isValid = false;
+        }
+
+        if (!isValid) return;
+
+        // Button Loading State
+        submitBtn.disabled = true;
+        btnText.style.display = "none";
+        btnSpinner.style.display = "inline-block";
+
+        const res = await API.loginUser(identifierInput.value, passwordInput.value);
+
+        submitBtn.disabled = false;
+        btnText.style.display = "inline-block";
+        btnSpinner.style.display = "none";
+
+        if (res.success) {
+          Utils.showToast("Login Successful! Redirecting to Dashboard...", "success", 2000);
+          setTimeout(() => {
+            const redirectUrl = sessionStorage.getItem("campusbite_redirect_after_login") || "pages/dashboard.html";
+            sessionStorage.removeItem("campusbite_redirect_after_login");
+            window.location.href = redirectUrl;
+          }, 800);
+        } else {
+          Utils.showToast(res.message, "error", 3500);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusBite — Smart College Canteen Management System</title>
+  <meta name="description" content="Skip the canteen queue! Order fresh meals, track kitchen preparation live, and pay with your student wallet at CampusBite.">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       Top Navigation Bar
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <!-- Logo -->
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon-wrapper">
+            <i class="fa-solid fa-utensils"></i>
+          </div>
+          <div class="brand-name">
+            <span class="brand-title">CampusBite</span>
+            <span class="brand-tagline">College Canteen</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a></li>
+          <li><a href="pages/menu.html" class="nav-link"><i class="fa-solid fa-burger"></i> Menu</a></li>
+          <li><a href="pages/orders.html" class="nav-link"><i class="fa-solid fa-receipt"></i> Orders</a></li>
+          <li><a href="pages/tracking.html" class="nav-link"><i class="fa-solid fa-satellite-dish"></i> Live Track</a></li>
+          <li><a href="pages/about.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> About</a></li>
+          <li><a href="pages/contact.html" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+        </ul>
+
+        <!-- Action Tools (Theme, Cart, Auth) -->
+        <div class="nav-actions">
+          <!-- Dark/Light Theme Toggle -->
+          <button class="nav-action-btn theme-toggle-btn" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <!-- Shopping Cart Button with Count Badge -->
+          <a href="pages/cart.html" class="nav-action-btn" title="View Cart" aria-label="Shopping Cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="badge-counter cart-count-badge" style="display: none;">0</span>
+          </a>
+
+          <!-- Dynamic User Account / Auth Container -->
+          <div class="nav-user-container">
+            <!-- Populated dynamically by main.js: Logged In User Dropdown or Login/Register buttons -->
+          </div>
+
+          <!-- Mobile Hamburger Menu Button -->
+          <button class="hamburger-btn" aria-label="Open Navigation Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       Mobile Navigation Drawer
+       ======================================================================== -->
+  <div class="drawer-backdrop"></div>
+  <aside class="mobile-drawer" aria-label="Mobile Navigation">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <div class="logo-icon-wrapper"><i class="fa-solid fa-utensils"></i></div>
+        <span class="brand-title">CampusBite</span>
+      </div>
+      <button class="drawer-close-btn" aria-label="Close Menu">&times;</button>
+    </div>
+    <div class="drawer-body">
+      <ul class="drawer-links">
+        <li><a href="index.html" class="drawer-link active"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="pages/menu.html" class="drawer-link"><i class="fa-solid fa-burger"></i> Digital Menu</a></li>
+        <li><a href="pages/cart.html" class="drawer-link"><i class="fa-solid fa-cart-shopping"></i> My Cart</a></li>
+        <li><a href="pages/orders.html" class="drawer-link"><i class="fa-solid fa-receipt"></i> Order History</a></li>
+        <li><a href="pages/tracking.html" class="drawer-link"><i class="fa-solid fa-satellite-dish"></i> Live Tracking</a></li>
+        <li><a href="pages/wallet.html" class="drawer-link"><i class="fa-solid fa-wallet"></i> Campus Wallet</a></li>
+        <li><a href="pages/favorites.html" class="drawer-link"><i class="fa-solid fa-heart"></i> Favorites</a></li>
+        <li><a href="pages/profile.html" class="drawer-link"><i class="fa-solid fa-user"></i> My Profile</a></li>
+        <li><a href="pages/about.html" class="drawer-link"><i class="fa-solid fa-circle-info"></i> About Canteen</a></li>
+        <li><a href="pages/contact.html" class="drawer-link"><i class="fa-solid fa-envelope"></i> Help & Contact</a></li>
+        <li><a href="admin-login.html" class="drawer-link text-primary"><i class="fa-solid fa-user-shield"></i> Staff Portal</a></li>
+      </ul>
+    </div>
+    <div class="drawer-footer">
+      <a href="login.html" class="btn btn-primary btn-block">Student Sign In</a>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       Main Content
+       ======================================================================== -->
+  <main class="main-content">
+
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-pill-badge">
+              <i class="fa-solid fa-bolt badge-icon"></i>
+              <span>⚡ Average 8-Min Kitchen Preparation Time</span>
+            </div>
+
+            <h1 class="hero-title">
+              Smart College Canteen <br>
+              <span class="highlight">Skip the Queue,</span> Savor the Food!
+            </h1>
+
+            <p class="hero-subtitle">
+              Pre-order your favorite campus meals, dosas, rolls, and cold coffee right from your lecture hall. Pay seamlessly with your student wallet and pick up with your token number.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="pages/menu.html" class="btn btn-primary btn-lg">
+                <i class="fa-solid fa-bag-shopping"></i> Order Now
+              </a>
+              <a href="#how-it-works" class="btn btn-secondary btn-lg">
+                <i class="fa-solid fa-circle-play"></i> How It Works
+              </a>
+            </div>
+
+            <div class="hero-stats-row">
+              <div class="hero-stat-item">
+                <strong>1,500+</strong>
+                <span>Happy Students Daily</span>
+              </div>
+              <div class="hero-stat-item">
+                <strong>25+</strong>
+                <span>Fresh Campus Dishes</span>
+              </div>
+              <div class="hero-stat-item">
+                <strong>4.9 ★</strong>
+                <span>Student Satisfaction</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Food Visuals & Floating Cards -->
+          <div class="hero-visual-wrapper">
+            <div class="hero-img-backdrop"></div>
+            <div class="hero-main-img-card">
+              <img
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=700&q=80"
+                alt="Delicious Canteen Food"
+                class="hero-main-img"
+              >
+            </div>
+
+            <!-- Floating Pill Cards -->
+            <div class="floating-card floating-card-1">
+              <div class="floating-icon"><i class="fa-solid fa-fire"></i></div>
+              <div class="floating-text">
+                <strong>Chef's Paneer Roll</strong>
+                <small>Top Selling Snack</small>
+              </div>
+            </div>
+
+            <div class="floating-card floating-card-2">
+              <div class="floating-icon"><i class="fa-solid fa-clock"></i></div>
+              <div class="floating-text">
+                <strong>Token #B-42 Ready</strong>
+                <small>Pick up at Counter 2</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. POPULAR CATEGORIES SECTION -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Explore Food</span>
+          <h2 class="section-title">Popular Canteen Categories</h2>
+          <p class="section-subtitle">From quick breakfast bites to hearty student thalis and evening refreshers.</p>
+        </div>
+
+        <div class="categories-grid">
+          <a href="pages/menu.html?cat=Breakfast" class="category-card">
+            <div class="category-icon-wrapper"><i class="fa-solid fa-bread-slice"></i></div>
+            <h3 class="category-name">Breakfast</h3>
+            <span class="category-count">Dosa, Idli, Paratha</span>
+          </a>
+
+          <a href="pages/menu.html?cat=Snacks" class="category-card">
+            <div class="category-icon-wrapper"><i class="fa-solid fa-cookie"></i></div>
+            <h3 class="category-name">Snacks</h3>
+            <span class="category-count">Samosa, Maggi, Momos</span>
+          </a>
+
+          <a href="pages/menu.html?cat=Meals" class="category-card">
+            <div class="category-icon-wrapper"><i class="fa-solid fa-bowl-rice"></i></div>
+            <h3 class="category-name">Meals</h3>
+            <span class="category-count">Thalis, Biryani, Chole</span>
+          </a>
+
+          <a href="pages/menu.html?cat=Fast%20Food" class="category-card">
+            <div class="category-icon-wrapper"><i class="fa-solid fa-burger"></i></div>
+            <h3 class="category-name">Fast Food</h3>
+            <span class="category-count">Burgers, Rolls, Sandwiches</span>
+          </a>
+
+          <a href="pages/menu.html?cat=Beverages" class="category-card">
+            <div class="category-icon-wrapper"><i class="fa-solid fa-mug-hot"></i></div>
+            <h3 class="category-name">Beverages</h3>
+            <span class="category-count">Cold Coffee, Chai, Juices</span>
+          </a>
+
+          <a href="pages/menu.html?cat=Desserts" class="category-card">
+            <div class="category-icon-wrapper"><i class="fa-solid fa-ice-cream"></i></div>
+            <h3 class="category-name">Desserts</h3>
+            <span class="category-count">Brownies, Gulab Jamun</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. POPULAR FOOD ITEMS PREVIEW -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Student Favorites</span>
+          <h2 class="section-title">Today's Most Popular Dishes</h2>
+          <p class="section-subtitle">Freshly prepared, pocket-friendly meals rated highest by campus students.</p>
+        </div>
+
+        <div class="food-grid" id="featured-food-grid">
+          <!-- Dynamically populated from data.js or fallback -->
+        </div>
+
+        <div class="text-center" style="margin-top: 3rem; text-align: center;">
+          <a href="pages/menu.html" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-utensils"></i> View Complete Menu (24 Items)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. HOW IT WORKS (5-STEP ANIMATED FLOW) -->
+    <section class="section section-alt" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Smooth Process</span>
+          <h2 class="section-title">How CampusBite Works</h2>
+          <p class="section-subtitle">5 simple steps from hunger to satisfaction — zero waiting in crowded queues.</p>
+        </div>
+
+        <div class="how-it-works-timeline">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-icon-box"><i class="fa-solid fa-id-card"></i></div>
+            <h3>Student Sign In</h3>
+            <p>Log in with your college student ID and password to access your dashboard.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-icon-box"><i class="fa-solid fa-utensils"></i></div>
+            <h3>Browse Menu</h3>
+            <p>Check live item availability, dietary tags (Veg/Non-Veg), ratings & prices.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-icon-box"><i class="fa-solid fa-cart-plus"></i></div>
+            <h3>Add to Cart</h3>
+            <p>Customize food quantities, add special cooking notes, and apply coupon codes.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-icon-box"><i class="fa-solid fa-wallet"></i></div>
+            <h3>Place Order</h3>
+            <p>Pay in 1-tap using your Campus Wallet, UPI QR code, or choose Cash at Counter.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">5</div>
+            <div class="step-icon-box"><i class="fa-solid fa-bell-concierge"></i></div>
+            <h3>Collect Food</h3>
+            <p>Track your token live. When it turns "Ready", collect your fresh hot food!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. FEATURES SECTION -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Why Choose Us</span>
+          <h2 class="section-title">Designed Exclusively for Campus Life</h2>
+          <p class="section-subtitle">Everything you need for a fast, delicious, and stress-free dining experience.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-bolt"></i></div>
+            <div class="feature-content">
+              <h3>Quick Ordering</h3>
+              <p>Order during the last 5 minutes of your lecture so your food is sizzling hot when the bell rings.</p>
+            </div>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-mobile-screen"></i></div>
+            <div class="feature-content">
+              <h3>Live Digital Menu</h3>
+              <p>Real-time stock statuses so you never stand in line only to discover your favorite roll is sold out.</p>
+            </div>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-satellite-dish"></i></div>
+            <div class="feature-content">
+              <h3>Live Order Tracking</h3>
+              <p>5-stage visual progress timeline from kitchen ticket to counter pickup with countdown timers.</p>
+            </div>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-qrcode"></i></div>
+            <div class="feature-content">
+              <h3>Online Payment & Wallet</h3>
+              <p>Recharge your Campus Wallet with student cashback offers or pay instantly via dynamic UPI QR.</p>
+            </div>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-hourglass-half"></i></div>
+            <div class="feature-content">
+              <h3>Zero Waiting Time</h3>
+              <p>No pushing in queues. Relax at your seat and walk up only when your token lights up green.</p>
+            </div>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <div class="feature-content">
+              <h3>1-Tap Reordering</h3>
+              <p>Quickly reorder your daily breakfast or lunch combos directly from your order history.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. STUDENT REVIEWS / TESTIMONIALS -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Student Feedback</span>
+          <h2 class="section-title">What Campus Students Say</h2>
+          <p class="section-subtitle">Real reviews from students across engineering, medical, and management branches.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">
+              "The digital ordering system has completely eliminated the 20-minute queue between classes. The Masala Dosa and Cold Coffee are consistently top notch!"
+            </p>
+            <div class="reviewer-meta">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Rohan" class="reviewer-avatar">
+              <div class="reviewer-info">
+                <strong>Rohan Verma</strong>
+                <span>Computer Science, 4th Year</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">
+              "Super clean kitchen, eco-friendly packaging, and prompt notification when food is ready. Really impressed by the campus wallet integration!"
+            </p>
+            <div class="reviewer-meta">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Ananya" class="reviewer-avatar">
+              <div class="reviewer-info">
+                <strong>Ananya Iyer</strong>
+                <span>Biotechnology, 2nd Year</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <p class="review-text">
+              "Paneer rolls are juicy and fresh. Token tracking saves us from crowding around the pickup window during the 1:15 PM rush."
+            </p>
+            <div class="reviewer-meta">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Tanmay" class="reviewer-avatar">
+              <div class="reviewer-info">
+                <strong>Tanmay Deshmukh</strong>
+                <span>Mechanical Engg, 3rd Year</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. PROMO CALLOUT BANNER -->
+    <section class="section">
+      <div class="container">
+        <div class="today-special-banner" style="background: linear-gradient(135deg, #1e293b, #0f172a); color: #fff;">
+          <div class="special-content">
+            <span class="special-tag" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">
+              <i class="fa-solid fa-ticket"></i> STUDENT OFFER
+            </span>
+            <h2 class="special-title" style="color: #fff;">Get 20% OFF Your First Online Order!</h2>
+            <p class="special-desc" style="color: #cbd5e1;">
+              Use promo code <strong style="color: #f59e0b; font-family: monospace; font-size: 1.2rem;">CANTEEN20</strong> at checkout on all orders above ₹100.
+            </p>
+            <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+              <a href="pages/menu.html" class="btn btn-primary btn-lg">Claim Offer Now</a>
+              <a href="register.html" class="btn btn-secondary btn-lg">Create Student Account</a>
+            </div>
+          </div>
+          <div class="special-media">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" alt="Pizza Burger Combo" class="special-img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       Footer
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo" style="color: #ffffff;">
+            <div class="logo-icon-wrapper"><i class="fa-solid fa-utensils"></i></div>
+            <div class="brand-name">
+              <span class="brand-title" style="background: none; -webkit-text-fill-color: #ffffff;">CampusBite</span>
+              <span class="brand-tagline">College Canteen</span>
+            </div>
+          </div>
+          <p>
+            Fueling campus minds with fresh, hygienic, and affordable meals. Digital self-ordering system for students, faculty, and staff.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/menu.html">Digital Menu</a></li>
+            <li><a href="pages/cart.html">My Cart</a></li>
+            <li><a href="pages/tracking.html">Live Order Tracking</a></li>
+            <li><a href="pages/wallet.html">Campus Wallet</a></li>
+            <li><a href="pages/about.html">About & Hygiene</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Canteen Hours</h4>
+          <div class="canteen-timing-item">
+            <span>Monday - Friday</span>
+            <span>8:00 AM - 6:00 PM</span>
+          </div>
+          <div class="canteen-timing-item">
+            <span>Saturday</span>
+            <span>8:00 AM - 3:00 PM</span>
+          </div>
+          <div class="canteen-timing-item">
+            <span>Sunday & Holidays</span>
+            <span style="color: #ef4444;">Closed</span>
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <a href="admin-login.html" class="btn btn-outline-primary btn-sm btn-block">
+              <i class="fa-solid fa-shield-halved"></i> Staff Admin Portal
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Campus Location</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">
+            <i class="fa-solid fa-location-dot text-primary"></i> Ground Floor, Main Academic Complex, Near Central Library.
+          </p>
+          <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">
+            <i class="fa-solid fa-phone text-primary"></i> +91 (0) 123-456-7890
+          </p>
+          <p style="font-size: 0.9rem;">
+            <i class="fa-solid fa-envelope text-primary"></i> canteen@college.edu
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 CampusBite. Smart College Canteen Management System. B.Tech Final Project Demo.</p>
+        <p>Built with HTML5, CSS3, ES6+ JavaScript & React.js</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       Mobile Bottom Bar Navigation (Phone View)
+       ======================================================================== -->
+  <nav class="mobile-bottom-bar" aria-label="Mobile Bottom App Bar">
+    <a href="index.html" class="bottom-bar-item active">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+    <a href="pages/menu.html" class="bottom-bar-item">
+      <i class="fa-solid fa-utensils"></i>
+      <span>Menu</span>
+    </a>
+    <a href="pages/cart.html" class="bottom-bar-item">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="badge-counter cart-count-badge" style="display: none;">0</span>
+      <span>Cart</span>
+    </a>
+    <a href="pages/orders.html" class="bottom-bar-item">
+      <i class="fa-solid fa-receipt"></i>
+      <span>Orders</span>
+    </a>
+    <a href="pages/dashboard.html" class="bottom-bar-item">
+      <i class="fa-solid fa-user"></i>
+      <span>Account</span>
+    </a>
+  </nav>
+
+  <!-- Core Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Featured Items Renderer on Landing Page -->
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const grid = document.getElementById("featured-food-grid");
+      if (!grid) return;
+      const res = await API.getMenu();
+      if (!res.success) return;
+
+      // Select top 6 popular items
+      const popular = res.data.slice(0, 6);
+      const favs = API.getFavorites();
+
+      grid.innerHTML = popular.map(food => {
+        const isFav = favs.includes(food.id);
+        return `
+          <div class="food-card" onclick="App.openFoodDetails('${food.id}')">
+            <div class="food-card-img-wrapper">
+              <img src="${food.image}" alt="${food.name}" class="food-card-img" loading="lazy">
+              <div class="card-top-badges">
+                <span class="diet-tag ${food.isVeg ? 'diet-veg' : 'diet-nonveg'}">
+                  <i class="fa-solid fa-circle"></i> ${food.isVeg ? 'Veg' : 'Non-Veg'}
+                </span>
+                <button class="btn-fav-card ${isFav ? 'active' : ''}" onclick="event.stopPropagation(); API.toggleFavorite('${food.id}'); this.classList.toggle('active');" title="Favorite">
+                  <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+                </button>
+              </div>
+              <span class="card-prep-time"><i class="fa-regular fa-clock"></i> ${food.prepTime}</span>
+            </div>
+            <div class="food-card-body">
+              <div class="food-card-meta">
+                <span class="food-category-label">${food.category}</span>
+                <span class="food-card-rating"><i class="fa-solid fa-star"></i> ${food.rating}</span>
+              </div>
+              <h3 class="food-card-title">${food.name}</h3>
+              <p class="food-card-desc">${food.description}</p>
+              <div class="food-card-footer">
+                <span class="food-price">₹${food.price}</span>
+                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); API.addToCart({ id: '${food.id}', name: '${food.name}', price: ${food.price}, image: '${food.image}', isVeg: ${food.isVeg} }, 1); Utils.showToast('Added ${food.name} to Cart 🛒', 'success');">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    });
+  </script>
+</body>
+</html>

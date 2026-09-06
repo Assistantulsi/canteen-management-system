@@ -1,0 +1,357 @@
+/* ==========================================================================
+   CampusBite - Admin Portal Layout & Management Stylesheet
+   Executive dashboard, order management, inventory, tables, KOT modal
+   ========================================================================== */
+
+.admin-body {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-main);
+}
+
+/* Admin Sidebar */
+.admin-sidebar {
+  width: 260px;
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 1000;
+  transition: width var(--transition-normal);
+}
+
+.admin-sidebar-header {
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.admin-badge-role {
+  background: var(--accent-ruby);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.admin-nav {
+  padding: 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+}
+
+.admin-nav-item:hover, .admin-nav-item.active {
+  background: var(--primary-light);
+  color: var(--primary-hover);
+}
+
+[data-theme="dark"] .admin-nav-item:hover, [data-theme="dark"] .admin-nav-item.active {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+.admin-nav-item i {
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.admin-nav-badge {
+  margin-left: auto;
+  background: var(--accent-ruby);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.admin-sidebar-footer {
+  padding: 1.25rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.admin-profile-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+/* Admin Main Viewport */
+.admin-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.admin-topbar {
+  height: 70px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+}
+
+.admin-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.admin-breadcrumb strong {
+  color: var(--text-main);
+}
+
+.admin-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Admin Content Body */
+.admin-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Stat Cards Grid */
+.stat-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-icon-wrapper {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.stat-icon-orange { background: var(--primary-light); color: var(--primary); }
+.stat-icon-green  { background: var(--accent-emerald-light); color: var(--accent-emerald); }
+.stat-icon-blue   { background: #e0f2fe; color: #0284c7; }
+.stat-icon-red    { background: var(--accent-ruby-light); color: var(--accent-ruby); }
+
+[data-theme="dark"] .stat-icon-orange { background: rgba(245, 158, 11, 0.15); }
+[data-theme="dark"] .stat-icon-green  { background: rgba(16, 185, 129, 0.15); }
+[data-theme="dark"] .stat-icon-blue   { background: rgba(14, 165, 233, 0.15); }
+[data-theme="dark"] .stat-icon-red    { background: rgba(239, 68, 68, 0.15); }
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.1;
+  margin-top: 0.2rem;
+}
+
+.stat-trend {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-trend.positive { color: var(--accent-emerald); }
+.stat-trend.negative { color: var(--accent-ruby); }
+
+/* Charts & Analytics Layout */
+.admin-charts-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 1.5rem;
+}
+
+.admin-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.admin-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+/* Admin Orders Management Board */
+.order-status-select {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-main);
+  cursor: pointer;
+  outline: none;
+}
+
+.order-status-select:focus {
+  border-color: var(--primary);
+}
+
+/* Printable Kitchen Order Ticket (KOT) */
+.kot-modal {
+  max-width: 420px;
+}
+
+.kot-ticket {
+  background: #ffffff;
+  color: #000000;
+  padding: 1.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  border: 1px dashed #666;
+  border-radius: 4px;
+}
+
+.kot-header {
+  text-align: center;
+  border-bottom: 2px dashed #000;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.kot-token {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin: 0.25rem 0;
+}
+
+.kot-items-table {
+  width: 100%;
+  margin: 0.75rem 0;
+  border-bottom: 1px dashed #000;
+  padding-bottom: 0.75rem;
+}
+
+.kot-items-table td {
+  padding: 0.25rem 0;
+}
+
+.kot-footer {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* Inventory Alerts */
+.stock-warning-banner {
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+[data-theme="dark"] .stock-warning-banner {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+@media (max-width: 900px) {
+  .admin-sidebar {
+    position: fixed;
+    left: -260px;
+  }
+
+  .admin-sidebar.open {
+    left: 0;
+  }
+
+  .admin-charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
